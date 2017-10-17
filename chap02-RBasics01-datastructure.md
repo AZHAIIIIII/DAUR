@@ -286,21 +286,26 @@ studentId stu_names is_boy
 因子是建立在整型(integer)向量基础上、只能包含预先定义数值的一种向量，具有 class()^[表示该向量是不同于其他向量的因子]、levels()^[显示因子所有可能的取值] 两种属性。
 ```r
 > factor_01 <- factor(c("boy", "girl" ,"girl", "boy"))
+# 创建因子 factor_01，并设置初始值为("boy", "girl" ,"girl", "boy")，内含四个元素
 > factor_01
 [1] boy  girl girl boy 
 Levels: boy girl
+
 > class(factor_01)
 [1] "factor"
+# 读取向量 factor_01 的类型
 > levels(factor_01)
 [1] "boy"  "girl"
-> factor_01 <- "dog"
-> factor_01 <- factor(c("boy", "girl" ,"girl", "boy"))
+# 读取因子 factor_01 的 levels
+
 > factor_01[3] <- "dog"
 Warning message:
 In `[<-.factor`(`*tmp*`, 3, value = "dog") :
   invalid factor level, NA generated
+# 将因子 factor_01 的第三个元素赋值为 "dog" 失败
 > factor_01[3] <- "boy"
 > factor_01
 [1] boy  girl boy  boy 
 Levels: boy girl
+# 将因子 factor_01 的第三个元素赋值为 "boy" 成功
 ```
