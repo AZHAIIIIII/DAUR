@@ -193,5 +193,14 @@ a3  9 12
 # 利用 $ 符号直接选定指定列
 [1] 1 2 3 4
 ```
-
-
+此外使用绑定函数`attach()`和解绑函数`detach()`可以让命令变得简单。绑定后可省略数据框名进行框内数据访问。
+```r
+> attach(studentdata)
+# 绑定函数 studentdata
+> studentId
+[1] 1 2 3 4
+> detach(studentdata)
+# 解除函数 studentdata 的绑定
+> studentID
+Error: object 'studentID' not found
+```
