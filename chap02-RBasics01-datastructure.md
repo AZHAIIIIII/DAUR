@@ -275,6 +275,10 @@ studentId stu_names is_boy
 2      a002
 3      a003
 4      a007
+
+> list_01$name_01
+# 读取列表 list_01 内名为 name_01 的元素
+[1] 1 2 3
 ```
 
 
