@@ -291,7 +291,7 @@ studentId stu_names is_boy
 [1] boy  girl girl boy 
 Levels: boy girl
 ```
-
+R 会将因子 factor_01 存储为向量(1, 2, 2, 1)的形式，其中 boy = 1, girl = 2，按字母顺序进行赋值，levels 亦按字母顺序排列。
 ```r
 > class(factor_01)
 [1] "factor"
@@ -311,4 +311,18 @@ In `[<-.factor`(`*tmp*`, 3, value = "dog") :
 Levels: boy girl
 # 将因子 factor_01 的第三个元素赋值为 "boy" 成功
 ```
-R 会将因子 factor_01 存储为（
+当因子内数据具有顺序时，使用`ordered = TRUE`指令进行说明。
+```r
+> factor_02 <- c("huge", "big", "small")
+> factor_02 <- factor(factor_02, ordered = T)
+> factor_02
+[1] huge  big   small
+Levels: big < huge < small
+```
+可以看到`levels`中表示大小的三个单词有了顺序，但此顺序与我们常识不符，需要对 levels 进行指定。
+```r
+> factor_02 <- factor(factor_02, ordered = T, levels = c("small", "big", "huge"))
+> factor_02
+[1] huge  big   small
+Levels: small < big < huge
+```
