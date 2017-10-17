@@ -241,7 +241,6 @@ $name_03
 [1,]    9   11
 [2,]   10   12
 
-
 $name_04
   studentId stu_names is_boy
 1         1      a001   TRUE
@@ -249,7 +248,33 @@ $name_04
 3         3      a003  FALSE
 4         4      a007  FALSE
 ```
+列表使用`[[]]`（双重方括号）或`$`符号进行数据的读取。
+```r
+> list_01[[2]]
+# 读取列表 list_01 的第2个元素
+     [,1] [,2] [,3]
+[1,]    1    3    5
+[2,]    2    4    6
 
+> list_01[[2]][2]
+# 读取列表 list_01 第2个元素的第2项
+[1] 2
 
+> list_01[[4]]
+# 读取列表 list_01 第4个元素
+studentId stu_names is_boy
+1         1      a001   TRUE
+2         2      a002   TRUE
+3         3      a003  FALSE
+4         4      a007  FALSE
+
+> list_01[[4]][2]
+# 读取列表 list_01 第4个元素的第2列
+  stu_names
+1      a001
+2      a002
+3      a003
+4      a007
+```
 
 
