@@ -21,7 +21,7 @@ vector_log <- c(T, TRUE, F, FALSE)         # 创建逻辑型向量 vector_log
 
 `c(1, 2, 3)`与`c(1:3)`等价；还可使用类似`vector_num <- 1:5`的懒人命令，但更推荐规范的创建方式。
 
-使用`向量名[元素序号]`的形式进行向量内元素的访问。
+使用`vector_name[number]`的形式进行向量内元素的访问。
 ```
 > vector_chr <- c("one", "two", "three")
 > vector_chr[2]
@@ -32,3 +32,16 @@ vector_log <- c(T, TRUE, F, FALSE)         # 创建逻辑型向量 vector_log
 [1] "one"   "three"
 ```
 以上三种方式分别访问了 vector_chr 向量的第2个元素、第2到第3个元素、第1和第3个元素。
+
+使用`is.numeric()`、`is.character()`、`is.logical()`来判断向量是否为指定类型。
+```
+> is.numeric(vector_num)
+[1] TRUE
+> is.character(vector_chr)
+[1] TRUE
+> is.logical(vector_log)
+[1] TRUE
+> is.numeric(vector_chr)
+[1] FALSE
+```
+
