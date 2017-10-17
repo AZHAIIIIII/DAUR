@@ -136,7 +136,7 @@ a3  9 12
 [1,]    1    5
 [2,]    3    7
 
-, , 2
+, , 
      [,1] [,2]
 [1,]    9   13
 [2,]   11   15
@@ -161,7 +161,25 @@ a3  9 12
 3         3      a003  FALSE
 4         4      a007  FALSE
 ```
-创建
+当两个数据框行数相同时，可使用`cbind()`进行合并；当两个数据框列数相同且列名一一对应时，可使用`rbind()`进行合并。
+```
+> cbind(studentdata, data.frame(age = c(18, 18, 17, 16)))
+  studentId stu_names is_boy age
+1         1      a001   TRUE  18
+2         2      a002   TRUE  18
+3         3      a003  FALSE  17
+4         4      a007  FALSE  16
+```
+```
+> rbind(studentdata, data.frame(studentId = 5, stu_names = "a008", is_boy = T))
+  studentId stu_names is_boy
+1         1      a001   TRUE
+2         2      a002   TRUE
+3         3      a003  FALSE
+4         4      a007  FALSE
+5         5      a008   TRUE
+```
+上面两个例子是临时创建了两个未命名的数据框，将其合并到了已有数据框`studentdata`中。在数据框内，列表示变量，行表示观测，刚刚的合并分别是增添了一个变量和一组观测。
 
 
 
