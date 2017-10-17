@@ -281,4 +281,26 @@ studentId stu_names is_boy
 [1] 1 2 3
 ```
 
+### 因子 Factor
 
+因子是建立在整型(integer)向量基础上、只能包含预先定义数值的一种向量，具有 class()^[表示该向量是不同于其他向量的因子]、levels()^[显示因子所有可能的取值] 两种属性。
+```r
+> factor_01 <- factor(c("boy", "girl" ,"girl", "boy"))
+> factor_01
+[1] boy  girl girl boy 
+Levels: boy girl
+> class(factor_01)
+[1] "factor"
+> levels(factor_01)
+[1] "boy"  "girl"
+> factor_01 <- "dog"
+> factor_01 <- factor(c("boy", "girl" ,"girl", "boy"))
+> factor_01[3] <- "dog"
+Warning message:
+In `[<-.factor`(`*tmp*`, 3, value = "dog") :
+  invalid factor level, NA generated
+> factor_01[3] <- "boy"
+> factor_01
+[1] boy  girl boy  boy 
+Levels: boy girl
+```
