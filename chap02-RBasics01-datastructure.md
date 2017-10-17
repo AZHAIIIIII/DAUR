@@ -290,7 +290,9 @@ studentId stu_names is_boy
 > factor_01
 [1] boy  girl girl boy 
 Levels: boy girl
+```
 
+```r
 > class(factor_01)
 [1] "factor"
 # 读取向量 factor_01 的类型
@@ -309,3 +311,4 @@ In `[<-.factor`(`*tmp*`, 3, value = "dog") :
 Levels: boy girl
 # 将因子 factor_01 的第三个元素赋值为 "boy" 成功
 ```
+R 会将因子 factor_01 存储为（
