@@ -67,7 +67,12 @@ wday(r_time1)
 wday(r_time1, label = TRUE)
 ```
 
-使用`with_tz()`可将已有时间转换为另一
+使用`with_tz()`可将当前时间转换为另一时区的时间，使用`force_tz()`可将当前数据的时区强制替换为另一时区。
+
+```r
+with_tz(r_time1, "America/Chicago")
+force_tz(r_time1, "America/Chicago")
+```
 
 
 ### 时间长度计算
