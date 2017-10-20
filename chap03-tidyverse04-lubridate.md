@@ -48,7 +48,6 @@ ydm(raw_time3)
 
 对符合指定格式的日期数据，**lubridate** 包中的函数可方便地提取日期（年月日）、年、月、日、时、分、秒、时区、周几等信息，这主要涉及`date()`、`year()`、`month()`、`day()`、`hour()`、`minute()`、`second()`、`tz()`和`wday()`等函数。
 
-
 ```r
 date(r_time1)
 year(r_time1)
@@ -72,6 +71,14 @@ wday(r_time1, label = TRUE)
 ```r
 with_tz(r_time1, "America/Chicago")
 force_tz(r_time1, "America/Chicago")
+```
+
+使用`leap_year()`可判断该时间是否为闰年。
+
+```r
+leap_year(r_time1)
+r_time4 <- ymd(20120923)
+leap_year(r_time4)
 ```
 
 
