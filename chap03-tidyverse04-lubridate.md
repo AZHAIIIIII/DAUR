@@ -67,6 +67,8 @@ wday(r_time1)
 wday(r_time1, label = TRUE)
 ```
 
+使用`with_tz()`可将已有时间转换为另一
+
 
 ### 时间长度计算
 
