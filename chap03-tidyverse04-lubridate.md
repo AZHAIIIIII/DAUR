@@ -82,8 +82,113 @@ leap_year(r_time4)
 ```
 
 
-### 时间长度计算
+### 时段数据
 
+**lubridate** 包内的函数可处理三种类型的时段数据，他们分别是 Interval 型、Duration 型和 Period 型。
+
++ Interval: 由两个时间点构成。
++ Duration: 以秒为单位，不考虑闰年闰秒。
++ Period: 时钟周期，单位包含年（y）、月（m）、日（d）、时（H）、分（M）和秒（S），考虑闰年闰秒。
+
+#### Interval
+
+可通过两种方式创建 Interval 数据。
+
+```{r}
+itv_time1 <- interval(r_time2,r_time1)
+itv_time1
+```
+```{r}
+r_time3 <- ymd(raw_time3, tz = "Asia/Shanghai")
+r_time5 <- ymd(20170813, tz = "Asia/Shanghai")
+itv_time2 <- r_time3 %--% r_time5
+itv_time2
+```
+
+使用`int_overlaps()`可判断两时段数据是否有重合，使用`%witnin%`判断某时段是否在另一时段当中。
+
+```{r}
+int_overlaps(itv_time1, itv_time2)
+```
+```{r}
+itv_time1 %within% itv_time2
+```
+
+之后可使用`setdiff()`将`itv_time1`中未与`itv_time2`重合的部分识别出来。
+
+```{r}
+setdiff(itv_time1,itv_time2)
+```
+
+#### Duration & Period
+
+Duration 和 Period 是两种更普遍的时段数据类型，记录的不是起止时间，而是持续时长，试通过以下命令观察二者差异。
+
+```{r}
+minutes(4)
+dminutes(4)
+```
+
+与 period 有关的函数通常以时间单位的复数形式命名，如：`minutes()`、`years()`;与 duration 有关的函数通常在对应的 period 函数前加 d，如：`dminutes()`、`dyears()`。
+
+```{r}
+leap_year(2017)
+ymd(20170101) + years(1)
+ymd(20170101) + dyears(1)
+leap_year(2016)
+ymd(20160101) + years(1)
+ymd(20160101) + dyears(1)
+```
+
+对 duration 类型来说，闰年依然是365天。
+
+可以利用加减除的运算完成一些其他工作，例如列举`r_time1`后几个月的这一天。 
+
+```{r}
+r_time1 + months(0:4)
+```
+
+以及判断这五个时间是否都包含在时段`itv_time1`中。
+
+```{r}
+(r_time1 + months(0:4)) %within% itv_time1
+```
+
+或者`itv_time2`一共有几天、几分钟？或是几个五分钟？
+
+```{r}
+itv_time2 / ddays(1)
+itv_time2 / dminutes(1)
+itv_time2 / dminutes(5)
+```
+
+由于除法求月数时余数没有太多意义，故采用整除、除余运算，整除运算符：`%/%`，除余运算符：`%%`。
+
+```{r}
+itv_time2 / months(1)
+itv_time2 %/% months(1)
+itv_time2 %% months(1)
+```
+
+命令`itv_time2 %% months(1)`返回的是 interval 数据，可用`as.period()`或`as.duration()`转换成指定类型。
+
+```{r}
+as.period(itv_time2 %% months(1))
+as.duration(itv_time2 %% months(1))
+```
+
+**注意**：加减运算后会出现无效的日期，如1月30日加一个月后的2月30日，此时 R 会返回 `NA`。
+
+```{r}
+ymd(20170130) + months(1)
+```
+
+
+
+
+### 以下
+
+（老师对不起！后一段程序我实在是读不懂，没办法针对那个进行补充，只根据包的介绍整理了一些内容码了上来。）
 
 ```r
 library(readxl)
